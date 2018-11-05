@@ -1,0 +1,48 @@
+@import "../../lib/weui/weui.wxss";
+.product-list {
+  border-top: 1px solid #ccc;
+}
+.product-list .product-item {
+  position: relative;
+  width: 100vw;
+  box-sizing: border-box;
+  background: #fff;
+  z-index: 999;
+}
+
+.product-list .product-item movable-area {
+  height: 90rpx;
+  margin-bottom: 2rpx;
+  width: calc(100vw - 90rpx);
+}
+
+.product-list .product-item movable-view {
+  height: 90rpx;
+  width: 100vw;
+  background: #fff;
+  z-index: 999;
+}
+
+.product-list .product-item .delete-btn {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0; 
+  width: 90rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #FFFFFF;
+  line-height: 90rpx;
+  z-index: 1;
+  background: #E66671;
+  text-align: center;
+}
+
+.product-item-movable {
+  /* border-bottom: 1px solid #ccc; */
+  height: 90rpx;
+}
+
+.weui-cell {
+  border-bottom: 1px solid #ccc !important;
+}

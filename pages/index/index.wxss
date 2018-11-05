@@ -1,0 +1,28 @@
+.page__bd_spacing {
+  padding: 60rpx 30rpx 30rpx;
+}
+.weui-loadmore__tips_in-line {
+  background-color: #FBF9FF;
+}
+.userinfo {
+  padding-top: 40rpx;
+  padding-bottom: 0;
+}
+.userinfo image {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.userinfo text {
+  height: 96rpx;
+  line-height: 96rpx;
+  padding-left: 20rpx;
+  color: #3d3d3d;
+  font-size: 30rpx;
+}
+.top {
+  /* background-color: #fff;
+  padding-bottom: 30rpx; */
+  padding-top: 40rpx;
+}

@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/newadd/newadd",
+    "pages/edit/edit"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "身份信息录入",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "drak",
+    "enablePullDownRefresh": true
+  }
+}

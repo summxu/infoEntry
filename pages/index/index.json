@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "listdel":"../../components/listdel/listdel"
+  }
+}
