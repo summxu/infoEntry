@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/newadd/newadd",
+    "pages/index/index",
     "pages/edit/edit"
   ],
   "window": {

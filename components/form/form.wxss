@@ -12,3 +12,6 @@ page {
 .weui-input {
   padding-left: 15px;
 }
+.weui-toptips  {
+  transition: all 1s;
+}
