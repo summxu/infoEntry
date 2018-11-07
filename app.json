@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/msg/msgfail",
+    "pages/msg/msgsuccess",
     "pages/newadd/newadd",
     "pages/index/index",
     "pages/edit/edit"

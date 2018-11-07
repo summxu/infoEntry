@@ -29,10 +29,10 @@ Component({
    */
   methods: {
     formSubmit(e) {
-      console.log(e.detail)
+      // console.log(e.detail)
       if (!this.validate.checkForm(e.detail.value)) {
         const error = this.validate.errorList[0];
-        console.log(error)
+        // console.log(error)
         this.setData({
           showTopTips: true,
           showTopTitle: error.msg,
@@ -49,11 +49,9 @@ Component({
       // 提交表单
 
       wx.navigateTo({
-        url: '../../pages/msg/msg_success',
-        success: function(res) {},
-        fail: function(res) {},
-        complete: function(res) {},
+        url: '/pages/msg/msgsuccess'
       })
+      
     },
     genderChange(e) {
       this.setData({
