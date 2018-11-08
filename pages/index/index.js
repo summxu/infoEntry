@@ -9,31 +9,46 @@ Page({
   },
   onLoad: function(options) {
     // 登录
-    wx.login({
-      success: res => {
-        console.log(res)
-        wx.request({
-          url: app.globalData.url + 'jscode/' + res.code,
-          success: (res) => {
-            app.globalData.openid = res.data.openid
-            wx.request({
-              url: app.globalData.url + 'list/',
-              method: 'POST',
-              data: {
-                opid: app.globalData.openid
-              },
-              success: (res) => {
-                this.setData({
-                  infoList:res.data
-                })
-                // console.log(this.data.infoList)
-              }
-            })
-          }
-        })
+    if (app.globalData.openid != null) {
+      wx.request({
+        url: app.globalData.url + 'list/',
+        method: 'POST',
+        data: {
+          opid: app.globalData.openid
+        },
+        success: (res) => {
+          this.setData({
+            infoList: res.data
+          })
+          // 停止刷新事件
+          wx.stopPullDownRefresh({success:function(){
+            wx.showToast({
+              title: '刷新完成',
+              icon: 'success',
+              duration: 1000
+            });
+          }})
+        }
+      })
+    } else {
+      app.employIdCallback = openid => {
+        console.log(app)
+        if (openid != '') {
+          wx.request({
+            url: app.globalData.url + 'list/',
+            method: 'POST',
+            data: {
+              openid: app.globalData.openid
+            },
+            success: (res) => {
+              this.setData({
+                infoList: res.data
+              })
+            }
+          })
+        }
       }
-    })
-
+    }
   },
   getUserInfo: function(e) {
     console.log(e)
@@ -48,5 +63,9 @@ Page({
     wx.navigateTo({
       url: '/pages/newadd/newadd'
     })
+  },
+  // 刷新事件
+  onPullDownRefresh:function(){
+    this.onLoad()
   }
 })

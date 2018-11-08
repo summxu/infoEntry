@@ -1,3 +1,4 @@
+const app = getApp()
 Component({
   properties: {
     productList: Array
@@ -60,19 +61,32 @@ Component({
         cancelText: "点错了",
         success: (res) => {
           console.log(res);
+          // 发送 del 请求
+          let productIndex = e.currentTarget.dataset.productindex
+          let productList = this.data.productList
           if (res.confirm) {
+            wx.request({
+              url: app.globalData.url + this.data.productList[productIndex].id,
+              method: 'DELETE',
+              success: (res) => {
+                if (res.statusCode == 200) {
+                  productList.splice(productIndex, 1)
+                  this.setData({
+                    productList: productList
+                  })
+                  if (productList[productIndex]) {
+                    this.setXmove(productIndex, 0)
+                  }
 
-            let productIndex = e.currentTarget.dataset.productindex
-            let productList = this.data.productList
-
-            productList.splice(productIndex, 1)
-
-            this.setData({
-              productList: productList
+                  wx.showToast({
+                    title: '删除成功',
+                    icon: 'success',
+                    duration: 1000
+                  });
+                }
+              }
             })
-            if (productList[productIndex]) {
-              this.setXmove(productIndex, 0)
-            }
+
 
           } else {
             this.hideDeleteButton(e)

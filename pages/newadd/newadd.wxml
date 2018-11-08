@@ -1,2 +1,128 @@
-<!--pages/newadd/newadd.wxml-->
-<form></form>
+<!--components/form/form.wxml-->
+<view class='page'>
+  <form bindsubmit="formSubmit">
+    <view class="page__bd">
+      <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{showTopTitle}}</view>
+
+      <view class="weui-cells__title">信息请填写完整</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">姓名</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name="name" class="weui-input" value='{{name}}' placeholder="请输入姓名" />
+          </view>
+        </view>
+
+        <view class="up-select weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">性别</view>
+          </view>
+          <view class="weui-cell__bd">
+            <view class="weui-cell weui-cell_select">
+              <view class="weui-cell__bd">
+                <picker name="gender" bindchange="genderChange" value="{{genderIndex}}" range="{{gender}}">
+                  <view class="weui-select">{{gender[genderIndex]}}</view>
+                </picker>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <view class="up-select weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">民族</view>
+          </view>
+          <view class="weui-cell__bd">
+            <view class="weui-cell weui-cell_select">
+              <view class="weui-cell__bd">
+                <picker name='nation' bindchange="nationChange" value="{{nationIndex}}" range="{{nation}}">
+                  <view class="weui-select">{{nation[nationIndex]}}</view>
+                </picker>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <view class="weui-cell weui-cell_input weui-cell_vcode">
+          <view class="weui-cell__hd">
+            <view class="weui-label">手机号</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name="telephone" class="weui-input" placeholder="请输入手机号" />
+          </view>
+        </view>
+
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">身份证号</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name="idcard" class="weui-input" placeholder="请输入身份证号" />
+          </view>
+        </view>
+
+        <view class="up-select weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">队号</view>
+          </view>
+          <view class="weui-cell__bd">
+            <view class="weui-cell weui-cell_select">
+              <view class="weui-cell__bd">
+                <picker name="group_num" bindchange="groupNumChange" value="{{groupNumIndex}}" range="{{groupNum}}">
+                  <view class="weui-select">{{groupNum[groupNumIndex]}}</view>
+                </picker>
+              </view>
+            </view>
+          </view>
+        </view>
+      
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">户口号</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name="household_num" class="weui-input" placeholder="请输入户口号" />
+          </view>
+          <!-- <view class="weui-cell__ft">
+            <icon type="warn" size="23" color="#E64340"></icon>
+          </view> -->
+        </view>
+
+      </view>
+
+      <view class="weui-cells__title">住址</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">
+            <textarea name="address" bindinput='addrChange' class="weui-textarea" maxlength="100" placeholder="请输入详细地址" style="height: 3.3em" />
+            <view class="weui-textarea-counter">{{addrLength}}/100</view>
+          </view>
+        </view>
+      </view>
+
+      <view class="weui-cells__title">用户身份</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_switch">
+          <view class="weui-cell__bd">是否替他人上报</view>
+          <view class="weui-cell__ft">
+            <switch name="is_helper" checked="{{is_helper}}" />
+          </view>
+        </view>
+      </view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_switch">
+          <view class="weui-cell__bd">是否是户主</view>
+          <view class="weui-cell__ft">
+            <switch name="is_master" checked="{{is_master}}" />
+          </view>
+        </view>
+      </view>
+
+      <view class="weui-btn-area">
+        <button form-type='submit' class="weui-btn" type="primary" bindtap="showTopTips">确定</button>
+      </view>
+    </view>
+  </form>
+</view>

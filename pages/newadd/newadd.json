@@ -1,7 +1,4 @@
 {
   "navigationBarTitleText": "人员新增",
-  "enablePullDownRefresh": false,
-  "usingComponents":{
-    "form":"../../components/form/form"
-  }
+  "enablePullDownRefresh": false
 }

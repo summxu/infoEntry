@@ -1,1 +1,16 @@
-/* pages/newadd/newadd.wxss */
+/* components/form/form.wxss */
+page {
+  padding-bottom: 40rpx;
+}
+.up-select {
+  padding-right: 0;
+}
+.up-select .weui-select{
+  border-right: none;
+}
+.weui-input {
+  padding-left: 15px;
+}
+.weui-toptips  {
+  transition: all 1s;
+}
