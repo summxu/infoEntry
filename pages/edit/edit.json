@@ -1,5 +1,7 @@
 {
-  "window": {
-    "navigationBarTitleText": "人员编辑"
+  "navigationBarTitleText": "人员编辑",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "form": "../../components/form/form"
   }
 }

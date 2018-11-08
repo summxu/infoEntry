@@ -4,7 +4,7 @@
       <movable-view out-of-bounds="true" direction="horizontal" x="{{product.xmove}}" inertia="true" data-productIndex="{{index}}" bindchange="handleMovableChange">
         <view class="product-item-movable">
 
-          <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <navigator url="../../pages/edit/edit" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
             <view class="weui-cell__bd">370111223344556677</view>
             <view class="weui-cell__ft weui-cell__ft_in-access">黎明</view>
           </navigator>

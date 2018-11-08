@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/msg/msgfail",
-    "pages/msg/msgsuccess",
-    "pages/newadd/newadd",
     "pages/index/index",
-    "pages/edit/edit"
+    "pages/newadd/newadd",
+    "pages/edit/edit",
+    "pages/msg/msgsuccess",
+    "pages/msg/msgfail"
   ],
   "window": {
     "navigationBarBackgroundColor": "#000",
