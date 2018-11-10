@@ -1,7 +1,12 @@
 Page({
   goHome(){
-    wx.navigateTo({
+    wx.reLaunch({
       url: '/pages/index/index',
+    })
+  },
+  goNewadd() {
+    wx.redirectTo({
+      url: '/pages/newadd/newadd',
     })
   }
 });

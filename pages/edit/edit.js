@@ -10,6 +10,10 @@ Page({
     nation: [
       '汉族', '回族', '其他'
     ],
+    btnLoad:{
+      show: false,
+      title: '修改'
+    },
     groupNum: [0, 1, 2, 3, 4, 5, 6],
     nationIndex: 0,
     genderIndex: 0,
@@ -41,7 +45,7 @@ Page({
     wx.request({
       url: app.globalData.url + this.data.id,
       success: (res) => {
-        console.log(res.data)
+        // console.log(res.data)
         this.setData({
           pageVlaues: {
             name: res.data.name,
@@ -56,7 +60,7 @@ Page({
           is_helper: res.data   .is_helper == 0 ? false : true,
           is_master: res.data   .is_master == 0 ? false : true
         })
-        console.log(this.data)
+        // console.log(this.data)
       }
     })
   },
@@ -79,9 +83,17 @@ Page({
 
       return false
     }
+    // 按钮加载
+    this.setData({
+      btnLoad: {
+        show: true,
+        title: '正在提交 请稍后'
+      }
+    })
     // 提交表单
     var data = e.detail.value
     data.submitter_openid = app.globalData.openid
+    data.id = this.data.id
     if (data.is_helper) {
       data.is_helper = 1
     } else {
@@ -98,11 +110,11 @@ Page({
       data: data,
       success: (res) => {
         if (res.statusCode == 200) {
-          wx.navigateTo({
+          wx.redirectTo({
             url: '/pages/msg/msgsuccess'
           })
         } else (
-          wx.navigateTo({
+          wx.redirectTo({
             url: '/pages/msg/msgfail'
           })
         )
@@ -138,6 +150,7 @@ Page({
         maxlength: 4
       },
       telephone: {
+        required: true,
         telephone: true
       },
       idcard: {
@@ -149,7 +162,6 @@ Page({
         minlength: 6
       },
       address: {
-        required: true,
         minlength: 6
       }
     }, {
@@ -158,6 +170,7 @@ Page({
         maxlength: '名称不得超过4字!'
       },
       telephone: {
+        required: '电话是必填字段',
         telephone: '电话格式不正确!'
       },
       idcard: {
@@ -169,7 +182,6 @@ Page({
         minlength: '户口号不能低于6个字符'
       },
       address: {
-        required: '住址是必填字段',
         minlength: '住址不能低于6个字符'
       }
     })

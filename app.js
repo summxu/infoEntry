@@ -19,7 +19,7 @@ App({
   },
   globalData: {
     openid: null,
-    url: 'http://47.105.161.30/weixin/miniprogram/submitedMsg/'
+    url: 'https://qinqing365.com.cn/weixin/miniprogram/submitedMsg/'
   },
   refSuccess: function() {
     

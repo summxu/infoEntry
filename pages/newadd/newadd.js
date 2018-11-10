@@ -1,4 +1,3 @@
-// components/form/form.js
 import WxValidate from '../../utils/WxValidate.js'
 const app = getApp()
 var validate
@@ -10,6 +9,10 @@ Page({
     nation: [
       '汉族', '回族', '其他'
     ],
+    btnLoad: {
+      show: false,
+      title: '提交'
+    },
     groupNum: [0, 1, 2, 3, 4, 5, 6],
     nationIndex: 0,
     genderIndex: 0,
@@ -25,10 +28,10 @@ Page({
     this.initValidate()
   },
   formSubmit(e) {
-    // console.log(e.detail.value)
+    console.log(e.detail.value)
     if (!this.validate.checkForm(e.detail.value)) {
       const error = this.validate.errorList[0];
-      // console.log(error)
+      console.log(error)
       this.setData({
         showTopTips: true,
         showTopTitle: error.msg,
@@ -42,6 +45,13 @@ Page({
 
       return false
     }
+    // 按钮加载
+    this.setData({
+      btnLoad: {
+        show: true,
+        title: '正在提交 请稍后'
+      }
+    })
     // 提交表单
     var data = e.detail.value
     data.submitter_openid = app.globalData.openid
@@ -61,11 +71,11 @@ Page({
       data: data,
       success:(res)=>{
         if (res.statusCode == 200) {
-          wx.navigateTo({
+          wx.redirectTo({
             url: '/pages/msg/msgsuccess'
           })
         }else(
-          wx.navigateTo({
+          wx.redirectTo({
             url: '/pages/msg/msgfail'
           })
         )

@@ -8,64 +8,67 @@ Page({
 
   },
   onLoad: function(options) {
+    console.log(getCurrentPages())
+    // 显示加载
+    wx.showLoading({
+      title: '加载中',
+    })
     // 登录
     if (app.globalData.openid != null) {
-      wx.request({
-        url: app.globalData.url + 'list/',
-        method: 'POST',
-        data: {
-          opid: app.globalData.openid
-        },
-        success: (res) => {
-          this.setData({
-            infoList: res.data
-          })
-          // 停止刷新事件
-          wx.stopPullDownRefresh({success:function(){
-            wx.showToast({
-              title: '刷新完成',
-              icon: 'success',
-              duration: 1000
-            });
-          }})
-        }
-      })
+      this.reqList()
     } else {
       app.employIdCallback = openid => {
-        console.log(app)
+        // console.log(app)
         if (openid != '') {
-          wx.request({
-            url: app.globalData.url + 'list/',
-            method: 'POST',
-            data: {
-              openid: app.globalData.openid
-            },
-            success: (res) => {
-              this.setData({
-                infoList: res.data
-              })
-            }
-          })
+          this.reqList()
         }
       }
     }
   },
   getUserInfo: function(e) {
-    console.log(e)
+    // console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
   },
-
+  // list请求
+  reqList(isRefresh) {
+    isRefresh = isRefresh || false
+    wx.request({
+      url: app.globalData.url + 'list/' + app.globalData.openid,
+      method: 'GET',
+      success: (res) => {
+        this.setData({
+          infoList: res.data
+        })
+        // 隐藏加载
+        wx.hideLoading()
+        if (isRefresh) {
+          // 停止刷新事件
+          setTimeout(() => {
+            wx.stopPullDownRefresh({
+              success: function() {
+                wx.showToast({
+                  title: '刷新完成',
+                  icon: 'success',
+                  duration: 1000
+                });
+              }
+            })
+          }, 500)
+        }
+      }
+    })
+  },
   goNewadd() {
     wx.navigateTo({
       url: '/pages/newadd/newadd'
     })
   },
   // 刷新事件
-  onPullDownRefresh:function(){
-    this.onLoad()
+  onPullDownRefresh: function() {
+    this.reqList(true)
   }
 })

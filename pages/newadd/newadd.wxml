@@ -1,4 +1,3 @@
-<!--components/form/form.wxml-->
 <view class='page'>
   <form bindsubmit="formSubmit">
     <view class="page__bd">
@@ -11,7 +10,7 @@
             <view class="weui-label">姓名</view>
           </view>
           <view class="weui-cell__bd">
-            <input name="name" class="weui-input" value='{{name}}' placeholder="请输入姓名" />
+            <input name="name" class="weui-input" placeholder="请输入姓名" />
           </view>
         </view>
 
@@ -50,7 +49,7 @@
             <view class="weui-label">手机号</view>
           </view>
           <view class="weui-cell__bd">
-            <input name="telephone" class="weui-input" placeholder="请输入手机号" />
+            <input type='number' name="telephone" class="weui-input" placeholder="请输入手机号" />
           </view>
         </view>
 
@@ -59,7 +58,7 @@
             <view class="weui-label">身份证号</view>
           </view>
           <view class="weui-cell__bd">
-            <input name="idcard" class="weui-input" placeholder="请输入身份证号" />
+            <input type='idcard' name="idcard" class="weui-input" placeholder="请输入身份证号" />
           </view>
         </view>
 
@@ -77,13 +76,13 @@
             </view>
           </view>
         </view>
-      
+
         <view class="weui-cell weui-cell_input">
           <view class="weui-cell__hd">
             <view class="weui-label">户口号</view>
           </view>
           <view class="weui-cell__bd">
-            <input name="household_num" class="weui-input" placeholder="请输入户口号" />
+            <input type="number" name="household_num" class="weui-input" placeholder="请输入户口号" />
           </view>
           <!-- <view class="weui-cell__ft">
             <icon type="warn" size="23" color="#E64340"></icon>
@@ -121,7 +120,7 @@
       </view>
 
       <view class="weui-btn-area">
-        <button form-type='submit' class="weui-btn" type="primary" bindtap="showTopTips">确定</button>
+        <button form-type='submit' class="weui-btn" type="primary" disabled="{{btnLoad.show}}">{{btnLoad.title}}</button>
       </view>
     </view>
   </form>

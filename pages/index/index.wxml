@@ -17,7 +17,7 @@
       <view class="weui-loadmore__tips weui-loadmore__tips_in-line">已经录入的人员</view>
     </view>
 
-    <view class="page__bd">
+    <view wx:if="{{infoList.length != 0?true:false}}" class="page__bd">
       <!-- <view class="weui-cells__title">点击可编辑 左滑可删除</view> -->
       <view class="weui-cells weui-cells_after-title">
         <listdel productList="{{infoList}}">

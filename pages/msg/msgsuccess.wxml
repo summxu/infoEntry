@@ -9,8 +9,8 @@
         </view>
         <view class="weui-msg__opr-area">
             <view class="weui-btn-area">
-                <button class="weui-btn" type="primary">继续录入</button>
-                <button url='/pages/index/index' bindtap='goHome' class="weui-btn" type="default">回到主页</button>
+                <button bindtap='goNewadd' class="weui-btn" type="primary">继续录入</button>
+                <button bindtap='goHome' class="weui-btn" type="default">回到主页</button>
             </view>
         </view>
         <view class="weui-msg__extra-area">
